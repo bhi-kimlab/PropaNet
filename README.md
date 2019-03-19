@@ -1,23 +1,28 @@
 # PropaNet
-This program was designed for...
+Propanet discovers the dynamics of TF networks against external stress such as heat stress or cold stress.  
+Given time-series **gene expression profile data** and **template network**, Propanet retrieves **master regulatory TFs** in each time-point.
+
+![fig1_Overview](readme/1_overview.png)
 
 ## Installation
-To download all the examples, simply clone this repository
-`https://github.com/minwoopak/Propanet.git`
+To download all the examples, simply clone this repository with the following command:
+> `git clone https://github.com/bhi-kimlab/Propanet.git`
 
 ## Dependency
-To run them, you also need the following dependencies
+To run them, you will need the following dependencies
 
----
-#### Python
- * numpy
- * pandas
- * multiprocessing
+#### Python : scipy.stats, networkx, multiprocessing, etc.
+Python needs to be installed. In addition, a number of libraries are used for the analysis.  
+Some of the non-default packages include scipy.stats, networkx and multiprocssing.
 
-#### R
- * Limma
+#### R : Limma ( _Optional_ )
+We use a package called "Limma" which is provided by [Bioconductor](http://bioconductor.org/packages/release/bioc/html/limma.html) to extract DEG data.  
+However, the complete datasets that we used in our analysis are provided in the repository.
 
 ## Input File Format
+There are two types of input files, **gene expression profile data** and **template network**.  
+Each data should take the following format:
+#### Gene expression profile data
 Time-series gene expression data of multiple conditions has to be stored in a single tab-delimited matrix form. (where different conditions are stacked column-wise)
 
 | Gene_id | Control          | Condition        |
@@ -25,6 +30,17 @@ Time-series gene expression data of multiple conditions has to be stored in a si
 | Gene1   | expression level | expression level |
 | Gene2   | expression level | expression level |
 | ...     | ...              | ...              |
+
+#### Template network
+The template network file should be comprised of 2 columns : One for source nodes and one for target nodes.  
+There should be _no header_ in the first row.
+
+| Source gene  | Target gene  |
+| :----------- | :----------- |
+| Source gene1 | Target gene1 |
+| Source gene2 | Target gene2 |
+| Source gene2 | Target gene2 |
+| ...          | ...          |
 
 ### Sample Labels
 The input file contains a column label as its first line. The label has a format of i_j_h
