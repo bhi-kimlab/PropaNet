@@ -23,13 +23,16 @@ However, the complete datasets that we used in our analysis are provided in the 
 There are two types of input files, **gene expression profile data** and **template network**.  
 Each data should take the following format:
 #### Gene expression profile data
-Time-series gene expression data of multiple conditions has to be stored in a single tab-delimited matrix form. (where different conditions are stacked column-wise)
+Time-series gene expression data of multiple conditions has to be stored in a single tab-delimited matrix form. (where different conditions are stacked column-wise)  
+There should be a header as the first row and it should take the following format:  
+> <_GeneID_>  <_Control-time_> <_Condition-time_>
 
-| Gene_id | Control          | Condition        |
-| ------- | :--------------: | ---------------: |
-| Gene1   | expression level | expression level |
-| Gene2   | expression level | expression level |
-| ...     | ...              | ...              |
+| Gene_id | Control-Shoots-0h | Control-Shoots-1h |  Heat-Shoots-0h  |  Heat-Shoots-1h  |
+| ------- | :---------------: | :---------------: | :--------------: | :--------------: |
+| Gene1   | expression level  | expression level  | expression level | expression level |
+| Gene2   | expression level  | expression level  | expression level | expression level |
+| Gene3   | expression level  | expression level  | expression level | expression level |
+| ...     | ...               | ...               | ...              | ...              |
 
 #### Template network
 The template network file should be comprised of 2 columns : One for source nodes and one for target nodes.  
@@ -41,15 +44,6 @@ There should be _no header_ in the first row.
 | Source gene2 | Target gene2 |
 | Source gene2 | Target gene2 |
 | ...          | ...          |
-
-### Sample Labels
-The input file contains a column label as its first line. The label has a format of i_j_h
- * i : Control/Condition
- * j : time-point
- * h : time-unit (hour)
-
-### Gene IDs
-The first column of the file includes gene IDs.
 
 ### Example
 ```
