@@ -25,23 +25,26 @@ Each data should take the following format:
 #### Gene expression profile data
 Time-series gene expression data of multiple conditions has to be stored in a single tab-delimited matrix form. (where different conditions are stacked column-wise)  
 There should be a header as the first row and it should take the following format:  
-> <_GeneID_>  <_Control-time_> <_Condition-time_>
 
-| Gene_id | Control-Shoots-0h | Control-Shoots-1h |  Heat-Shoots-0h  |  Heat-Shoots-1h  |
-| ------- | :---------------: | :---------------: | :--------------: | :--------------: |
-| Gene1   | expression level  | expression level  | expression level | expression level |
-| Gene2   | expression level  | expression level  | expression level | expression level |
-| Gene3   | expression level  | expression level  | expression level | expression level |
-| ...     | ...               | ...               | ...              | ...              |
+| Gene_id | Condition-time1  | Condition-time2  | Condition-time3  | Condition-time4  | ... |
+| ------- | :--------------: | :--------------: | :--------------: | :--------------: | :-: |
+| Gene1   | expression level | expression level | expression level | expression level | ... |
+| Gene2   | expression level | expression level | expression level | expression level | ... |
+| Gene3   | expression level | expression level | expression level | expression level | ... |
+| ...     | ...              | ...              | ...              | ...              | ... |
 
 ###### Example)
 ```
-AGI Control_0_h Control_05_h    Control_1_h Control_3_h Control_6_h Control_12_h    Control_24_h    Cold_0_h    Cold_05_h   Cold_1_h    Cold_3_h    Cold_6_h    Cold_12_h   Cold_24_h
-AT1G01010   0   -0.139394407    -0.152530099    -0.156121134    -0.180087384    -0.095033671    -0.216560433    0   -0.154829544    -0.070773114    -0.146864574    -0.142279603    -0.160496473    -0.110211809
-AT1G01040   0   -0.042997223    0.059865445 -0.030210557    -0.07748179 -0.045007578    0.021080998 0   -0.045927327    -0.020536712    0.015591588 0.064597276 0.067403396 0.136353683
-AT1G01060   0   -0.05952888 -0.083900109    -0.417545241    -0.723319018    -0.691957548    -0.01210007 0   -0.042703729    -0.000666969    -0.02564026 -0.034619052    -0.074636705    -0.075214348
-AT1G01070   0   -0.016709256    -0.071140518    -0.010718778    -0.295093989    -0.283263794    -0.049080058    0   0.016980682 -0.036470699    -0.05335869 -0.137604399    -0.212629356    -0.245722342
-AT1G01080   0   -0.008805295    0.005914988 0.014547664 0.027181841 0.081628037 0.020220747 0   0.035903529 -0.009913287    -0.0011389  -0.009907133    -0.049022001    -0.084337305
+gene	Heat-Shoots-0.25h	Heat-Shoots-0.5h	Heat-Shoots-1h	Heat-Shoots-3h
+AT1G01010	4.91798979107909	4.81768901700114	5.67991373730826	6.02273932823551
+AT1G01030	4.45806149779191	4.53272006731038	5.36916581768974	5.51771002546865
+AT1G01040	3.8552645118378	3.87640592858555	4.42911094757011	4.83351626001844
+AT1G01050	-2.84787294715136	-2.64691204175781	-3.05377896002984	-3.87740186446588
+AT1G01060	-0.899222494190051	0.609781349298916	-0.985720858842949	1.57868637136184
+AT1G01070	-0.899064779308411	0.609662493243061	0.985561143281074	1.57841350780699
+AT1G01080	-0.89887322954867	-0.609596150621448	0.98554170116417	1.57833846949708
+AT1G01090	0.898799238909556	0.609558025275848	0.985367888674293	-1.57830555053209
+AT1G01100	-0.898776072706743	-0.609434153689444	-0.985195207884564	1.57828766511001
 ```
 
 #### Template network
@@ -69,22 +72,24 @@ AT1G01060	AT1G19630
 AT1G01060	AT1G20030
 ...
 ```
+---
+## Results
 
 ---
-## Run Propanet
-To run Propanet with our example data, simply run the `run.sh` script in command line.
-```bash
-bash run.sh
-```
-In order to run Propanet with another dataset,
-1. Prepare the data in the format that is described above.
-2. run `network_weight.py` and `TF_adding_NP.py` in that order. The arguments for each of the scripts are as follows:
-  > `python network_weight.py ` <_template network_> <_gene expression profile data_> <_name of the output template network_>
+## Running Propanet
+* To run Propanet with our example data, simply run the `run.sh` script in command line.
+> `bash run.sh`
 
-  > `python TF_adding_NP_noCtrl.py` <_Total TF list_> <*output of network_weight.py*> <_gene expression data_> <_binary file that indicates DEG in the gene expression data_> **-cond** <_prefix of output files_> -outD <_output directory name_>
 
-#### Example)
-```bash
-python network_weight.py -nwk data/templateNetwork -exp data/DEG.AtGenExpress.signed_zstats.heat_shoots -p 15 -o data/templateNetwork.heat_shoots
-python TF_adding_NP_noCtrl.py data/Ath_TF_list.gene data/templateNetwork.heat_shoots data/DEG.AtGenExpress.signed_zstats.heat_shoots data/DEG.AtGenExpress.signed_binary.heat_shoots -cond AtGenExpress.heat_shoots -p 5 -c 0.5 -coverNo 300 -outD result
-```
+* In order to run Propanet with another dataset,
+ 1. Prepare the data in the format that is described above.
+ 2. run `network_weight.py` and `TF_adding_NP.py` in that order. The arguments for each of the scripts are as follows:
+    > `python network_weight.py ` <_template network_> <_gene expression profile data_> <_name of the output template network_>
+
+    > `python TF_adding_NP_noCtrl.py` <_Total TF list_> <*output of network_weight.py*> <_gene expression data_> <_binary file that indicates DEG in the gene expression data_> **-cond** <_prefix of output files_> -outD <_output directory name_>
+
+  #### Example)
+  ```bash
+  python network_weight.py -nwk data/templateNetwork -exp data/DEG.AtGenExpress.signed_zstats.heat_shoots -p 15 -o data/templateNetwork.heat_shoots
+  python TF_adding_NP_noCtrl.py data/Ath_TF_list.gene data/templateNetwork.heat_shoots data/DEG.AtGenExpress.signed_zstats.heat_shoots data/DEG.AtGenExpress.signed_binary.heat_shoots -cond AtGenExpress.heat_shoots -p 5 -c 0.5 -coverNo 300 -outD result
+  ```
