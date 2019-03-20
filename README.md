@@ -83,7 +83,7 @@ In order to run Propanet with another dataset,
 
   > `python TF_adding_NP_noCtrl.py` <_Total TF list_> <*output of network_weight.py*> <_gene expression data_> <_binary file that indicates DEG in the gene expression data_> **-cond** <_prefix of output files_> -outD <_output directory name_>
 
-###### Example)
+#### Example)
 ```bash
 python network_weight.py -nwk data/templateNetwork -exp data/DEG.AtGenExpress.signed_zstats.heat_shoots -p 15 -o data/templateNetwork.heat_shoots
 python TF_adding_NP_noCtrl.py data/Ath_TF_list.gene data/templateNetwork.heat_shoots data/DEG.AtGenExpress.signed_zstats.heat_shoots data/DEG.AtGenExpress.signed_binary.heat_shoots -cond AtGenExpress.heat_shoots -p 5 -c 0.5 -coverNo 300 -outD result
