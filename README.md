@@ -16,7 +16,7 @@ Python needs to be installed. In addition, a number of libraries are used for th
 Some of the non-default packages include scipy.stats, networkx and multiprocssing.
 
 #### R : Limma ( _Optional_ )
-We use a package called "Limma" which is provided by [Bioconductor](http://bioconductor.org/packages/release/bioc/html/limma.html) to extract DEG data.  
+We use a package called "Limma" which is provided by [**Bioconductor**](http://bioconductor.org/packages/release/bioc/html/limma.html) to extract DEG data.  
 However, the complete datasets that we used in our analysis are provided in the repository.
 
 ## Input File Format
