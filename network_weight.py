@@ -25,7 +25,7 @@ if __name__=="__main__":
     parser = argparse.ArgumentParser(description='python %(prog)s -nwk nwkFile -exp expFile -o out')
     parser.add_argument('-nwk',required=True,help='Network file')
     parser.add_argument('-exp',required=True,help='gene expression File')
-    parser.add_argument('-p',type=int, metavar='N',default='15',help='total process')
+    parser.add_argument('-p',type=int, metavar='N',default='1',help='total process')
     parser.add_argument('-o',required=True,help='out File')
     args=parser.parse_args()
     

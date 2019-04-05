@@ -83,9 +83,9 @@ def TF_adding_NP(DEGli, geneSet, TFli, TFrankFile, DEGnetFile, seed, coverNo=200
         lst_node_weight (li)
     '''
     DEGnet = nx.read_edgelist(DEGnetFile,data=(('weight',float),),create_using=nx.DiGraph())
-    nodeCnt=len(DEGnet.nodes())
-    TFli_rank=pd.read_csv(TFrankFile,sep='\t',header=None)[0].tolist()
     TFset=set(TFli)
+    nodeCnt=len(set(DEGnet.nodes())-TFset)
+    TFli_rank=pd.read_csv(TFrankFile,sep='\t',header=None)[0].tolist()
     corPre=-np.inf
     corr=[]
     cover=[]
@@ -135,11 +135,11 @@ if __name__ == "__main__":
     #parser.add_argument('binCtrl',help='binary file of Control data from DEGlimma')
     parser.add_argument('-geneSet',help='gene set by user') 
     parser.add_argument('-cond',required=True,help='condition name') 
-    parser.add_argument('-outD',default='result',help='project (output directory) name')
+    parser.add_argument('-outD',help='project (output directory) name')
 #    parser.add_argument('-r',help='# repeats for IM')
-    parser.add_argument('-p',type=int,default='5',help='# process for multiprocessing')
-    parser.add_argument('-c',type=float,default='0.5',help='coverage threshold')
-    parser.add_argument('-coverNo',default='300',type=float)
+    parser.add_argument('-p',default='10',type=int,help='# process for multiprocessing')
+    parser.add_argument('-c',default='0.5',type=float,help='coverage threshold')
+    parser.add_argument('-coverNo',default='200',type=float)
     args=parser.parse_args()
 
     if args.outD != None:

@@ -23,7 +23,7 @@ However, the complete datasets that we used in our analysis are provided in the 
 There are two types of input files, **gene expression profile data** and **template network**.  
 Each data should take the following format:
 #### Gene expression profile data
-Time-series gene expression data of multiple conditions has to be stored in a single tab-delimited matrix form. (where different conditions are stacked column-wise)  
+Time-series gene expression data has to be stored in a single tab-delimited matrix form.
 There should be a header as the first row and it should take the following format:  
 
 | Gene_id | Condition-time1  | Condition-time2  | Condition-time3  | Condition-time4  | ... |
@@ -74,6 +74,7 @@ AT1G01060	AT1G20030
 ```
 ---
 ## Results
+<span style="color:orange">some *orange* text</span>
 
 ---
 ## Running Propanet
