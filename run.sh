@@ -12,10 +12,10 @@ expFile="data/DEG.$data.signed_zstats.$cond"
 n=$(head -n 1 $seedFile| awk '{print NF}')
 
 # Weighted template network construction
-python network_weight.py -nwk data/templateNetwork -exp ${expFile} -o ${resD}/templateNetwork.heat_shoots
+python2.7 network_weight.py -nwk data/templateNetwork -exp ${expFile} -o ${resD}/templateNetwork.heat_shoots
 
 # Extract optimal TF list
-python TF_adding_NP_noCtrl.py ${TFliFile} ${resD}/templateNetwork.heat_shoots ${expFile} ${seedFile} -p 10 -cond ${data}.${cond} -outD ${resD}
+python2.7 TF_adding_NP_noCtrl.py ${TFliFile} ${resD}/templateNetwork.heat_shoots ${expFile} ${seedFile} -p 10 -cond ${data}.${cond} -outD ${resD}
 
 # Extract target genes of the optimal TFs
 for ((i=1;i<=$[$n-1];i++));do
