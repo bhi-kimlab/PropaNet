@@ -6,18 +6,15 @@ Given time-series **gene expression profile data** and **template network**, Pro
 
 ## Installation
 To download all the examples, simply clone this repository with the following command:
-> `git clone https://github.com/bhi-kimlab/Propanet.git`
+> `git clone https://github.com/bhi-kimlab/PropaNet.git`
 
 ## Dependency
 To run them, you will need the following dependencies
 
-#### Python : scipy.stats, networkx, multiprocessing, etc.
-Python needs to be installed. In addition, a number of libraries are used for the analysis.  
+#### Python2.7 : scipy.stats, networkx, multiprocessing, etc.
+Python version 2.7 needs to be installed(The code may not work with Python3).  
+In addition, a number of libraries are used for the analysis.  
 Some of the non-default packages include scipy.stats, networkx and multiprocssing.
-
-#### R : Limma ( _Optional_ )
-We use a package called "Limma" which is provided by [**Bioconductor**](http://bioconductor.org/packages/release/bioc/html/limma.html) to extract DEG data.  
-However, the complete datasets that we used in our analysis are provided in the repository.
 
 ## Input File Format
 There are two types of input files, **gene expression profile data** and **template network**.  
@@ -74,23 +71,14 @@ AT1G01060	AT1G20030
 ```
 ---
 ## Results
-<span style="color:orange">some *orange* text</span>
+There are three output files with suffixes "_TFTGs" "_TFs", and "_TGs". Each contains a list of resulting TFs, TGs and all resulting genes that includes both TFs and TGs.
 
 ---
 ## Running Propanet
-* To run Propanet with our example data, simply run the `run.sh` script in command line.
-> `bash run.sh`
-
+* To run Propanet with our example data, simply run the `run.sh` script in command line as follows.
+> `bash run.sh AtGenExpress heat_shoots`
 
 * In order to run Propanet with another dataset,
  1. Prepare the data in the format that is described above.
- 2. run `network_weight.py` and `TF_adding_NP.py` in that order. The arguments for each of the scripts are as follows:
-    > `python network_weight.py ` <_template network_> <_gene expression profile data_> <_name of the output template network_>
-
-    > `python TF_adding_NP_noCtrl.py` <_Total TF list_> <*output of network_weight.py*> <_gene expression data_> <_binary file that indicates DEG in the gene expression data_> **-cond** <_prefix of output files_> -outD <_output directory name_>
-
-  #### Example)
-  ```bash
-  python network_weight.py -nwk data/templateNetwork -exp data/DEG.AtGenExpress.signed_zstats.heat_shoots -p 15 -o data/templateNetwork.heat_shoots
-  python TF_adding_NP_noCtrl.py data/Ath_TF_list.gene data/templateNetwork.heat_shoots data/DEG.AtGenExpress.signed_zstats.heat_shoots data/DEG.AtGenExpress.signed_binary.heat_shoots -cond AtGenExpress.heat_shoots -p 5 -c 0.5 -coverNo 300 -outD result
-  ```
+ 2. run the `run.sh` feeding in the arguments as follows
+    > `bash run.sh` <_DataName_> <_Condition_> <_(optional)additional gene list file_>
