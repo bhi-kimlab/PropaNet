@@ -1,6 +1,6 @@
 # PropaNet
-Propanet discovers the dynamics of TF networks against external stress such as heat stress or cold stress.  
-Given time-series **gene expression profile data** and **template network**, Propanet retrieves **master regulatory TFs** in each time-point.
+PropaNet discovers the dynamics of TF networks against external stress such as heat stress or cold stress.  
+Given time-series **gene expression profile data** and **template network**, PropaNet retrieves **master regulatory TFs** in each time-point.
 
 ![fig1_Overview](readme/1_overview.png)
 
@@ -74,11 +74,11 @@ AT1G01060	AT1G20030
 There are three output files with suffixes "_TFTGs" "_TFs", and "_TGs". Each contains a list of resulting TFs, TGs and all resulting genes that includes both TFs and TGs.
 
 ---
-## Running Propanet
-* To run Propanet with our example data, simply run the `run.sh` script in command line as follows.
+## Running PropaNet
+* To run PropaNet with our example data, simply run the `run.sh` script in command line as follows.
  > `bash run.sh AtGenExpress heat_shoots`
 
-* In order to run Propanet with another dataset,
+* In order to run PropaNet with another dataset,
  1. Prepare the data in the format that is described above.
  2. run the `run.sh` feeding in the arguments as follows
 
