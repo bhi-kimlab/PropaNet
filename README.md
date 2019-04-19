@@ -76,9 +76,10 @@ There are three output files with suffixes "_TFTGs" "_TFs", and "_TGs". Each con
 ---
 ## Running Propanet
 * To run Propanet with our example data, simply run the `run.sh` script in command line as follows.
-> `bash run.sh AtGenExpress heat_shoots`
+ > `bash run.sh AtGenExpress heat_shoots`
 
 * In order to run Propanet with another dataset,
  1. Prepare the data in the format that is described above.
  2. run the `run.sh` feeding in the arguments as follows
-    > `bash run.sh` <_DataName_> <_Condition_> <_(optional)additional gene list file_>
+
+ > `bash run.sh` <_DataName_> <_Condition_> <_(optional)additional gene list file_>
