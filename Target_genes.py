@@ -72,7 +72,7 @@ if __name__=="__main__":
     parser.add_argument('TFliFile')
     parser.add_argument('TFfile')
     parser.add_argument('-geneSetFile')
-    parser.add_argument('out')
+    # parser.add_argument('out')
     parser.add_argument('outD')
     parser.add_argument('n')
     args=parser.parse_args()
@@ -87,9 +87,10 @@ if __name__=="__main__":
         edgeSet = set()
     for idx,TF in enumerate(TFli):
         edges, TGenes, TGs =Target_genes(TF,network,DEGli,TFSet,geneSet)
-        with open('{}/{}.{}.{}.TG'.format(args.outD,args.out,idx,TF),'w') as f3:
-            f3.write('\n'.join(list(TGenes)))
-            edgeSet |= edges
+        # with open('{}/{}.{}.{}.TG'.format(args.outD,args.out,idx,TF),'w') as f3:
+        #     f3.write('\n'.join(list(TGenes)))
+        #     edgeSet |= edges
+        edgeSet |= edges
         with open('{}/subnetwork.{}'.format(args.outD,args.n),'w') as f4:
             for (a, b, c) in edgeSet : f4.write(a+'\t'+b+'\t'+str(c)+'\n')
                     

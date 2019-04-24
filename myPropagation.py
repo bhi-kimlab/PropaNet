@@ -98,7 +98,7 @@ class Walker:
 			if arr_p.shape[1] >= 50000:
 				break
 		tmp_coef,tmp_pval=spearmanr(p_t,criteria_p)
-		print('%d iterated'%(arr_p.shape[1]))
+		# print('%d iterated'%(arr_p.shape[1]))
 		out_spearman = (tmp_coef,tmp_pval)
 		# now, generate and print a rank list from the final prob vector
 		if node_list:#if I want to get propagation result only from selected node list
