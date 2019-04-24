@@ -71,15 +71,15 @@ AT1G01060	AT1G20030
 ```
 ---
 ## Results
-There are three output files with suffixes "_TFTGs" "_TFs", and "_TGs". Each contains a list of resulting TFs, TGs and all resulting genes that includes both TFs and TGs.
+The output is the network that is comprised of the resulting TFs/TGs.
 
 ---
 ## Running PropaNet
 * To run PropaNet with our example data, simply run the `run.sh` script in command line as follows.
- > `bash run.sh AtGenExpress heat_shoots`
+ > `bash run.sh`
 
 * In order to run PropaNet with another dataset,
  1. Prepare the data in the format that is described above.
  2. run the `run.sh` feeding in the arguments as follows
 
- > `bash run.sh` <_DataName_> <_Condition_> <_(optional)additional gene list file_>
+ > `bash run.sh` <_DEG binary indication data_> <_DEG expression data_> <_(optional)additional gene list_>
