@@ -2,16 +2,16 @@
 
 # <Replace with the description and/or purpose of this shell script.>
 TFliFile="data/Ath_TF_list.gene"
-seedFile=$1 # "data/DEG.AtGenExpress.signed_binary.heat_shoots"
-expFile=$2 # "data/DEG.AtGenExpress.signed_zstats.heat_shoots"
+expFile=$1 # "data/DEG.AtGenExpress.signed_zstats.heat_shoots"
+seedFile=$2 # "data/DEG.AtGenExpress.signed_binary.heat_shoots"
 gSet=$3 # (optional) additional gene list file if the user wants
 resD="result"
 
-if [ -z ${seedFile} ]; then
-    seedFile="data/DEG.AtGenExpress.signed_binary.heat_shoots"
-fi
 if [ -z ${expFile} ]; then
     expFile="data/DEG.AtGenExpress.signed_zstats.heat_shoots"
+fi
+if [ -z ${seedFile} ]; then
+    seedFile="data/DEG.AtGenExpress.signed_binary.heat_shoots"
 fi
 # string=(`echo ${seedFile} | tr '/' ' '`)
 # prefix=`echo ${string[1]}`

@@ -13,11 +13,11 @@ To run them, you will need the following dependencies
 
 #### Python2.7 : scipy.stats, networkx, multiprocessing, etc.
 Python version 2.7 needs to be installed(The code may not work with Python3).  
-In addition, a number of libraries are used for the analysis.  
+In addition, a number of libraries are used in the analysis.  
 Some of the non-default packages include scipy.stats, networkx and multiprocssing.
 
 ## Input File Format
-There are two types of input files, **gene expression profile data** and **template network**.  
+There are three types of input files, **gene expression profile data**, **DEG binary data** and **template network**.  
 Each data should take the following format:
 #### Gene expression profile data
 Time-series gene expression data has to be stored in a single tab-delimited matrix form.
@@ -42,6 +42,24 @@ AT1G01070	-0.899064779308411	0.609662493243061	0.985561143281074	1.5784135078069
 AT1G01080	-0.89887322954867	-0.609596150621448	0.98554170116417	1.57833846949708
 AT1G01090	0.898799238909556	0.609558025275848	0.985367888674293	-1.57830555053209
 AT1G01100	-0.898776072706743	-0.609434153689444	-0.985195207884564	1.57828766511001
+```
+
+#### DEG binary indication data
+DEG binary indication data is a matrix that indicates which genes in our expression data are differentially expressed genes(DEGs).  
+If a value in the DEG binary indication data matrix is "1", it would mean that the corresponding gene at the same location in our expression profile data is differentially expressed.  
+The following is our example DEG binary data.
+```
+gene	Heat-Shoots-0.25h	Heat-Shoots-0.5h	Heat-Shoots-1h	Heat-Shoots-3h
+AT1G01010 1	1	-1	-1
+AT1G01030	0	0	0	-1
+AT1G01040	0	0	0	0
+AT1G01050	0	0	0	0
+AT1G01060	0	0	-1	-1
+AT1G01070	0	0	0	-1
+AT1G01080	0	0	0	-1
+AT1G01090	0	0	0	-1
+AT1G01100	0	0	0	0
+...
 ```
 
 #### Template network
@@ -71,7 +89,7 @@ AT1G01060	AT1G20030
 ```
 ---
 ## Results
-The output is the network in the form of an edge list which is comprised of the resulting TFs/TGs.
+The output is a network(in the form of an edge list) comprised of the resulting TFs/TGs that are found by PropaNet.
 
 ![Output Network](readme/Output.png)
 
@@ -82,6 +100,6 @@ The output is the network in the form of an edge list which is comprised of the 
 
 * In order to run PropaNet with another dataset,
  1. Prepare the data in the format that is described above.
- 2. run the `run.sh` feeding in the arguments as follows
+ 2. run the `run.sh` by feeding in the arguments as follows
 
- > `bash run.sh` <_DEG binary indication data_> <_DEG expression data_> <_(optional)additional gene list_>
+ > `bash run.sh` <_Gene expression profile data_> <_DEG binary indication data_> <_(optional)additional gene list_>
