@@ -71,7 +71,9 @@ AT1G01060	AT1G20030
 ```
 ---
 ## Results
-The output is the network that is comprised of the resulting TFs/TGs.
+The output is the network in the form of an edge list which is comprised of the resulting TFs/TGs.
+
+![Output Network](readme/Output.png)
 
 ---
 ## Running PropaNet
