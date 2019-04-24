@@ -13,26 +13,26 @@ fi
 if [ -z ${expFile} ]; then
     expFile="data/DEG.AtGenExpress.signed_zstats.heat_shoots"
 fi
-string=(`echo ${seedFile} | tr '/' ' '`)
+# string=(`echo ${seedFile} | tr '/' ' '`)
 # prefix=`echo ${string[1]}`
 prefix="PropaNet"
 n=$(head -n 1 $seedFile| awk '{print NF}')
 
-if [ -e intermediate_results ]; then
+if [ -e result/intermediate_results ]; then
     echo
 else
-    mkdir intermediate_results
+    mkdir result/intermediate_results
 fi
 
 # Weighted template network construction
-python2.7 network_weight.py -nwk data/templateNetwork -exp ${expFile} -o ${resD}/intermediate_results/${prefix}.templateNetwork
+python2.7 network_weight.py -nwk data/templateNetwork -exp ${expFile} -o ${resD}/intermediate_results/${prefix}.templateNetwork || exit 1
 
 # Extract optimal TF list
-python2.7 TF_adding_NP_noCtrl.py ${TFliFile} ${resD}/intermediate_results/${prefix}.templateNetwork ${expFile} ${seedFile} -p 10 -cond ${prefix} -outD ${resD}/intermediate_results
+python2.7 TF_adding_NP_noCtrl.py ${TFliFile} ${resD}/intermediate_results/${prefix}.templateNetwork ${expFile} ${seedFile} -p 10 -cond ${prefix} -outD ${resD}/intermediate_results || exit 1
 
 # Extract target genes of the optimal TFs
 for ((i=1;i<=$[$n-1];i++));do
-    python Target_genes.py ${resD}/intermediate_results/${prefix}.nwk.t$i ${resD}/intermediate_results/${prefix}.DEGli.t$i $TFliFile ${resD}/intermediate_results/${prefix}.TF_rank.t$i.trim ${gSet} ${resD}/TG $i&   
+    python Target_genes.py ${resD}/intermediate_results/${prefix}.nwk.t$i ${resD}/intermediate_results/${prefix}.DEGli.t$i $TFliFile ${resD}/intermediate_results/${prefix}.TF_rank.t$i.trim ${gSet} ${resD}/TG $i&
 done; wait
 
 # Final Result : Networks are comprised of resulting TFs/TGs
