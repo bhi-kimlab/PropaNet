@@ -102,4 +102,4 @@ The output is a network(in the form of an edge list) comprised of the resulting 
  1. Prepare the data in the format that is described above.
  2. run the `run.sh` by feeding in the arguments as follows
 
- > `bash run.sh` <_Gene expression profile data_> <_DEG binary indication data_> <_(optional)additional gene list_>
+ > `bash run.sh` <_Gene expression profile data_> <_DEG binary indication data_> <_Template network_> <_(optional)additional gene list_>

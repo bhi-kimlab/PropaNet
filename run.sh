@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # <Replace with the description and/or purpose of this shell script.>
-TFliFile="data/Ath_TF_list.gene"
 expFile=$1 # "data/DEG.AtGenExpress.signed_zstats.heat_shoots"
 seedFile=$2 # "data/DEG.AtGenExpress.signed_binary.heat_shoots"
-gSet=$3 # (optional) additional gene list file if the user wants
+TFliFile=$3 # "data/Ath_TF_list.gene"
+gSet=$4 # (optional) additional gene list file if the user wants
 resD="result"
 
 if [ -z ${expFile} ]; then
@@ -13,8 +13,10 @@ fi
 if [ -z ${seedFile} ]; then
     seedFile="data/DEG.AtGenExpress.signed_binary.heat_shoots"
 fi
-# string=(`echo ${seedFile} | tr '/' ' '`)
-# prefix=`echo ${string[1]}`
+if [ -z ${TFliFile} ]; then
+	TFliFile="data/Ath_TF_list.gene"
+fi
+
 prefix="PropaNet"
 n=$(head -n 1 $seedFile| awk '{print NF}')
 
