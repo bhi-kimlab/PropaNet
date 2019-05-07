@@ -48,7 +48,7 @@ def main():
   parser.add_argument('resPath')
   args=parser.parse_args()
   symDict, descDict = makeDict('data/kegg_ath_gene.txt')
-  outF = open(args.resPath+'/network_edges.txt', 'w')
+  outF = open(args.resPath+'/timeseries_network.txt', 'w')
   for f in os.listdir(args.resPath+'/TG') :
     if os.path.isdir(args.resPath+'/TG/'+f) or f[-2:]=='TG' or f[-3:]=='txt': continue
     print f

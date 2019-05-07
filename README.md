@@ -102,4 +102,7 @@ The output is a network(in the form of an edge list) comprised of the resulting 
  1. Prepare the data in the format that is described above.
  2. run the `run.sh` by feeding in the arguments as follows
 
- > bash run.sh <_Gene expression profile data_> <_DEG binary indication data_> <_Template network_> <_(optional)additional gene list_>
+ > bash run.sh <_Gene expression profile data_> <_DEG binary indication data_> <_Template network_> <_(optional)additional gene list_>  
+
+ For example, if we explicitly specify the arguments for our example data, it would look like this
+ > `bash run.sh data/DEG.AtGenExpress.signed_zstats.heat_shoots data/DEG.AtGenExpress.signed_binary.heat_shoots data/Ath_TF_list.gene`
