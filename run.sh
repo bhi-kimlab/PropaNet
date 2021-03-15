@@ -34,11 +34,11 @@ python2.7 TF_adding_NP_noCtrl.py ${TFliFile} ${resD}/intermediate_results/${pref
 
 # Extract target genes of the optimal TFs
 for ((i=1;i<=$[$n-1];i++));do
-    python Target_genes.py ${resD}/intermediate_results/${prefix}.nwk.t$i ${resD}/intermediate_results/${prefix}.DEGli.t$i $TFliFile ${resD}/intermediate_results/${prefix}.TF_rank.t$i.trim ${gSet} ${resD}/TG $i&
+    python2.7 Target_genes.py ${resD}/intermediate_results/${prefix}.nwk.t$i ${resD}/intermediate_results/${prefix}.DEGli.t$i $TFliFile ${resD}/intermediate_results/${prefix}.TF_rank.t$i.trim ${gSet} ${resD}/TG $i&
 done; wait
 
 # Final Result : Networks are comprised of resulting TFs/TGs
-python makeTGDesc.py ${resD}
+python2.7 makeTGDesc.py ${resD}
 
 # cd ${resD}
 # awk '{print}' *.trim|sort|uniq > ../propanet_${cond}_TFs
