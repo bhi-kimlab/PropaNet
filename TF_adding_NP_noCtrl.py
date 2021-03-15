@@ -188,7 +188,7 @@ if __name__ == "__main__":
         ##Assign new weight to timepoint-specific network
         weight_DEG_nwk = weight_tp[weight_tp.gene.isin(nwk_tp.nodes())].set_index('gene')
         weight_dict = weight_DEG_nwk.T.to_dict('records')[0]
-        nx.set_node_attributes(nwk_tp,'weight',weight_dict)
+        nx.set_node_attributes(nwk_tp,weight_dict,'weight')
         # print >> sys.stderr,'tp', i,'network done',time.strftime("%H:%M:%S",time.gmtime(time.time()-start)),'\n'
         
         #step1: Influence maximization
